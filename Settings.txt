@@ -7,3 +7,5 @@ docker run --name jenkins-blueocean --restart=on-failure --detach --network jenk
 TeamViewer
 id - 1 717 032 604
 password - ed56cns7
+
+-----------------------
