@@ -1,5 +1,10 @@
 https://youtu.be/3z_eNJckOig?t=1376
 
+http://dev.treeman.com.ua:9480/
+
+git clone ssh://GitDev@dev.treeman.com.ua:9422:test.git
+git clone git@github.com:Uginchus/EducationProject.git
+
 ------
 UE Source
 
