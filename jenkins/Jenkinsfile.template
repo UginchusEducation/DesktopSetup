@@ -4,41 +4,41 @@ pipeline {
             label 'docker-agent-python'
             }
       }
+    options {
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
+    }
     triggers {
-        pollSCM '*/5 * * * *'
+        pollSCM '* * * * *'
     }
     stages {
         stage('Build') {
             steps {
-                echo "Building.."
+                echo "Start Building..."
                 sh '''
-                echo "doing building stuff"
-                '''
-                /*sh '''
                 cd myapp
                 pip install -r requirements.txt
-                '''*/
+                '''
+                echo "Finish Building..."
             }
         }
         stage('Test') {
             steps {
-                echo "Testing.."
+                echo "Start Testing..."
                 sh '''
-                echo "doing testing stuff"
+                cd myapp
+                python3 hello.py
+                python3 hello.py --name=Brad
                 '''
-                // sh '''
-                // cd myapp
-                // python3 hello.py
-                // python3 hello.py --name=Brad
-                // '''
+                echo "Finish Testing..."
             }
         }
         stage('Deliver') {
             steps {
-                echo 'Deliver....'
+                echo "Start Deliver..."
                 sh '''
                 echo "doing delivery stuff.."
                 '''
+                echo "Finish Deliver..."
             }
         }
     }
