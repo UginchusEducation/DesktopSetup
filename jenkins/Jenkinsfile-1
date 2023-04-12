@@ -1,7 +1,10 @@
 pipeline {
-  agent { docker { image 'my-local-maven:3.9.1' }}
+  agent none 
   stages {
     stage('Checkout') {
+      agent { 
+        docker { image 'my-local-maven:3.9.1' }
+      }
       steps {
         checkout scmGit(
           branches: [[name: '*/main']], 
