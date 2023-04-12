@@ -1,0 +1,2 @@
+// For commit quick command
+git config --global alias.qc "commit -am"
