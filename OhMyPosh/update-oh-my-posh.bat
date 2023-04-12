@@ -1,0 +1,1 @@
+winget upgrade JanDeDobbeleer.OhMyPosh -s winget
