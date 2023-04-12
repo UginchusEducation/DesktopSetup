@@ -1,0 +1,1 @@
+docker build -t my-local-maven:3.9.1 .

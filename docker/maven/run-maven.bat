@@ -1,0 +1,1 @@
+docker run -it --rm --name my-maven-project -v "C:\docker-maven-data":/usr/src/mymaven -w /usr/src/mymaven maven:3.9.1-eclipse-temurin-11-alpine mvn clean install
