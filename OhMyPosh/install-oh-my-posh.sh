@@ -6,4 +6,4 @@ unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
 chmod u+rw ~/.poshthemes/*.omp.*
 rm ~/.poshthemes/themes.zip
 
-oh-my-posh init pwsh --config '/home/git/DesktopSetup/OhMyPosh/atomic.omp.json' | Atomic
+eval "$(oh-my-posh init bash --config ~/atomic.omp.json)"
