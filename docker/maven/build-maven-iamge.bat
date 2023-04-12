@@ -1,0 +1,1 @@
+docker build my_local_maven:3.9.1-jdk-11-alpine .

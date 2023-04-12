@@ -21,22 +21,17 @@ pipeline {
                 echo "Finish Checkout..."
             }  
         }       
-        stage('Test') {
-            steps {
-                echo "Start Testing..."
-                sh '''
-                echo "doing testing stuff.."
-                '''
-                echo "Finish Testing..."
+        agent {
+            docker {
+                image 'maven:3.9.1-eclipse-temurin-11-alpine'
+                args '-v $HOME/.m2:/root/.m2'
             }
         }
-        stage('Deliver') {
-            steps {
-                echo "Start Deliver..."
-                sh '''
-                echo "doing delivery stuff.."
-                '''
-                echo "Finish Deliver..."
+        stages {
+            stage('Build') {
+                steps {
+                    sh 'mvn -B'
+                }
             }
         }
     }
