@@ -5,3 +5,5 @@ wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/theme
 unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
 chmod u+rw ~/.poshthemes/*.omp.*
 rm ~/.poshthemes/themes.zip
+
+oh-my-posh init pwsh --config '/home/git/DesktopSetup/OhMyPosh/atomic.omp.json' | Atomic
