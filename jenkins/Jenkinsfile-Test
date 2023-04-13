@@ -1,17 +1,19 @@
 pipeline {
-  agent { 
-    node { label 'docker-agent-alpine' } 
-  }
+  agent none
   options {
     buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
   }
   stages {
     stage('Run maven') {
+      agent {
+        docker { image 'jenkins/agent:alpine-jdk11' }
+      }
       steps {
-        docker { image 'my-local-maven:3.9.1' }
-        git 'https://github.com/UginchusEducation/DesktopSetup.git'
-        sh 'mvn --version'
-        sh 'mvn clean install'
+        // docker { image 'my-local-maven:3.9.1' }
+        // git 'https://github.com/UginchusEducation/DesktopSetup.git'
+        // sh 'mvn --version'
+        // sh 'mvn clean install'
+        echo "Finish runnning clone"
       }
     }
   }
