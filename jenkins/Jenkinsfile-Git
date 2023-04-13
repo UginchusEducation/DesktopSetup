@@ -15,7 +15,7 @@ pipeline {
                 echo "!!!-START copy stage..."
                 echo "!!!^^^Start copy..."
                 sh 'ls'
-                copyArtifacts(projectName: 'my-test-pipeline');
+                //copyArtifacts(projectName: 'my-test-pipeline');
                 echo "!!!...Finish copy"
                 echo "!!!^^^Start unzip..."
                 //zip unzipFile: 'Build.zip', dir:'source'
