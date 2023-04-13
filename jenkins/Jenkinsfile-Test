@@ -4,7 +4,7 @@ pipeline {
     buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
   }
   stages {
-    stage('Run maven') {
+    stage('Alpine Agent') {
       agent {
         node { lable 'docker-agent-alpine' }
       }
@@ -13,7 +13,7 @@ pipeline {
         echo "Finish testing agent"
       }
     }
-    stage('Run maven') {
+    stage('Maven Agent') {
       agent {
         node { lable 'docker-agent-maven' }
       }
