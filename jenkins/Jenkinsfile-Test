@@ -1,6 +1,6 @@
 pipeline {
   agent { 
-    node { lable 'my-local-maven:3.9.1' }
+    node { lable 'docker-agent-maven' }
   }
   options {
     buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
