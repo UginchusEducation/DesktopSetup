@@ -30,14 +30,13 @@ pipeline {
                 echo 'Deliver...'
                 sh '''
                 echo "doing delivery stuff.."
-                echo "Hello World" > hello.txt
                 '''
             }
         }
-        stage('Archive') {
-            steps {
-                archiveArtifacts(artifacts: '**/*.txt', followSymlinks: false)
-            }
+    }
+    post {
+        always {
+            archiveArtifacts(artifacts: '**/*.txt',  followSymlinks: false)
         }
     }
 }
