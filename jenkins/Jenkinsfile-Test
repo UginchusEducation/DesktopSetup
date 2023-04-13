@@ -1,12 +1,10 @@
 pipeline {
-  agent none
+  agent { 
+    node { label 'docker-agent-alpine' } }
+  options {
+    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
+  }
   stages {
-    stage('Run base agent') {
-      agent { docker { image 'jenkins/agent:latest-alpine-jdk11' } }
-      steps {
-        echo "Test phrase"
-      }
-    }
     stage('Run maven') {
       agent { docker { image 'my-local-maven:3.9.1' } }
       steps {
