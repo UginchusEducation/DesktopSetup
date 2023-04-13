@@ -14,7 +14,7 @@ pipeline {
                 sh '''
                 echo "doing build stuff.."
                 '''
-                junit 'build-results.xml'
+                // junit 'build-results.xml'
             }
         }
         stage('Test') {
