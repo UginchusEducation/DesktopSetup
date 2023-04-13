@@ -6,10 +6,18 @@ pipeline {
   stages {
     stage('Run maven') {
       agent {
-        docker { image 'jenkins/agent:alpine-jdk11' }
+        node { lable 'docker-agent-alpine' }
       }
       steps {
-        // docker { image 'my-local-maven:3.9.1' }
+        echo "Start testing agent"
+        echo "Finish testing agent"
+      }
+    }
+    stage('Run maven') {
+      agent {
+        node { lable 'docker-agent-maven' }
+      }
+      steps {
         // git 'https://github.com/UginchusEducation/DesktopSetup.git'
         // sh 'mvn --version'
         // sh 'mvn clean install'
