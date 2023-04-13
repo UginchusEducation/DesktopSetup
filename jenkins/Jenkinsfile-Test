@@ -3,7 +3,7 @@ pipeline {
     stage('Run base agent') {
       agent { docker { image 'jenkins/agent:latest-alpine-jdk11' } }
       steps {
-        'echo "Test phrase"'
+        echo "Test phrase"
       }
     }
     stage('Run maven') {
