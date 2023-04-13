@@ -1,6 +1,6 @@
 pipeline {
   agent { 
-    node { label 'docker-agent-maven' }
+    node { label 'docker-agent-alpine' }
   }
   options {
     buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
