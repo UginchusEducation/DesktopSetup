@@ -28,7 +28,7 @@ pipeline {
             steps {
                 echo "!!!-START archive stage..."
                 echo "!!!^^^Start zip..."
-                zip -v
+                //zip -v
                 sh '''
                 ls'
                 '''
