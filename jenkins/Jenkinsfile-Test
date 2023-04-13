@@ -10,20 +10,25 @@ pipeline {
       disableConcurrentBuilds()
     }
     stages {
-        stage('Build') {
+        stage('Copy files') {
             steps {
                 echo "Building..."
                 sh '''
                 echo "doing build stuff.."
                 '''
-                // junit 'build-results.xml'
             }
         }
-        stage('Test') {
+        stage('Checkout') {
             steps {
                 echo "Testing..."
+                dir('build') {
+                    checkout scmGit(
+                        branches: [[name: '*/main']], 
+                        extensions: [cloneOption(depth: 1, noTags: true, reference: '', shallow: true, timeout: 200)], 
+                        userRemoteConfigs: [[credentialsId: 'jenkins-roguelike-source', url: 'https://github.com/UginchusEducation/DesktopSetup.git']])
                 sh '''
                 echo "doing test stuff.."
+                cd build
                 ls
                 '''
             }
@@ -39,7 +44,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts(artifacts: '**/*.txt',  followSymlinks: false)
+            archiveArtifacts(artifacts: '',  followSymlinks: false)
         }
     }
 }
