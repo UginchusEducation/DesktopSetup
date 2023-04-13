@@ -7,7 +7,6 @@ pipeline {
   }
   stages {
     stage('Maven Agent') {
-      }
       steps {
         // git 'https://github.com/UginchusEducation/DesktopSetup.git'
         // sh 'mvn --version'
