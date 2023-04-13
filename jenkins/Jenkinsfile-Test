@@ -38,11 +38,6 @@ pipeline {
             steps {
                 archiveArtifacts(artifacts: '**/*.txt', followSymlinks: false)
             }
-    }
-    }
-    post {
-        always {
-            junit 'build/reports/build-results.xml'
         }
     }
 }
