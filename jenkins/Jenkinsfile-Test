@@ -1,21 +1,12 @@
 pipeline {
-  agent none
+  agent { 
+    node { lable 'my-local-maven:3.9.1' }
+  }
   options {
     buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
   }
   stages {
-    stage('Alpine Agent') {
-      agent {
-        node { lable 'docker-agent-alpine' }
-      }
-      steps {
-        echo "Start testing agent"
-        echo "Finish testing agent"
-      }
-    }
     stage('Maven Agent') {
-      agent {
-        node { lable 'docker-agent-maven' }
       }
       steps {
         // git 'https://github.com/UginchusEducation/DesktopSetup.git'
