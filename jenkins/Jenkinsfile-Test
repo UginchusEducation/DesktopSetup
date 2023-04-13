@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Maven Agent') {
       agent { 
-        node { label 'docker-agent-alpine' }
+        node { label 'docker-agent-maven' }
       }
       steps {
         // git 'https://github.com/UginchusEducation/DesktopSetup.git'
