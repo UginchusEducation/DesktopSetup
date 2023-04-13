@@ -7,9 +7,7 @@ pipeline {
   }
   stages {
     stage('Maven Agent') {
-      agent {
-        docker { image 'maven:3.8.6-openjdk-11-slim' }
-      }
+      // agent { docker { image 'maven:3.8.6-openjdk-11-slim' } }
       steps {
         sh '''
         // git 'https://github.com/UginchusEducation/DesktopSetup.git'
