@@ -28,7 +28,7 @@ pipeline {
             steps {
                 echo "!!!-START archive stage..."
                 echo "!!!^^^Start zip..."
-                zip defaultExcludes: false, dir: '', exclude: '', glob: '', zipFile: 'source.zip'
+                //zip defaultExcludes: false, dir: '', exclude: '', glob: '', zipFile: 'source.zip'
                 sh 'ls'
                 echo "!!!...Finish zip"
                 echo "!!!^^^Start deleting all files in source..."
