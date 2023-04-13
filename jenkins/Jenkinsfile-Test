@@ -6,7 +6,7 @@ pipeline {
   }
   stages {
     stage('Run maven') {
-      docker { image 'my-local-maven:3.9.1' } }
+      docker { image 'my-local-maven:3.9.1' }
       steps {
         git 'https://github.com/UginchusEducation/DesktopSetup.git'
         sh 'mvn --version'
