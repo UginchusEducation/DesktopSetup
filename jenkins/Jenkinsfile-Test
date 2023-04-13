@@ -5,7 +5,9 @@ pipeline {
         }
     }
     options {
-      buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
+      buildDiscarder(logRotator(numToKeepStr: '5')) 
+      durabilityHint('PERFORMANCE_OPTIMIZED') 
+      disableConcurrentBuilds()
     }
     stages {
         stage('Build') {
@@ -20,9 +22,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Testing..."
-                sh '''
-                echo "doing test stuff.."
-                '''
+                sh 'echo "doing test stuff.."'
             }
         }
         stage('Deliver') {
@@ -30,10 +30,15 @@ pipeline {
                 echo 'Deliver...'
                 sh '''
                 echo "doing delivery stuff.."
+                echo "Hello World" > hello.txt
                 '''
-                sh './gradlew check'
             }
         }
+        stage('Archive') {
+            steps {
+                archiveArtifacts(artifacts: '**/*.txt', followSymlinks: false)
+            }
+    }
     }
     post {
         always {
