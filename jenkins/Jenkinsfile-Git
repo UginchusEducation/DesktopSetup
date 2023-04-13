@@ -29,9 +29,7 @@ pipeline {
                 echo "!!!-START archive stage..."
                 echo "!!!^^^Start zip..."
                 //zip -v
-                sh '''
-                ls'
-                '''
+                sh 'ls'
                 echo "!!!...Finish zip"
                 echo "!!!^^^Start deleting all files in source..."
                 //dir ('bin') { deleteDir() }
