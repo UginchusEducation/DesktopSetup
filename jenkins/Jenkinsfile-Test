@@ -1,7 +1,13 @@
 pipeline {
-  agent { docker { image 'maven:3.9.1' } }
   stages {
-    stage('log version info') {
+    stage('Run base agent') {
+      agent { docker { image 'jenkins/agent:latest-alpine-jdk11' } }
+      steps {
+        'echo "Test phrase"'
+      }
+    }
+    stage('Run maven') {
+      agent { docker { image 'my-local-maven:3.9.1' } }
       steps {
         git 'https://github.com/UginchusEducation/DesktopSetup.git'
         sh 'mvn --version'
