@@ -1,12 +1,13 @@
 pipeline {
-  agent { 
-    node { lable 'docker-agent-maven' }
-  }
+  agent none
   options {
     buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
   }
   stages {
     stage('Maven Agent') {
+      agent { 
+        node { label 'docker-agent-maven' }
+      }
       steps {
         // git 'https://github.com/UginchusEducation/DesktopSetup.git'
         // sh 'mvn --version'
