@@ -28,9 +28,11 @@ pipeline {
             steps {
                 echo "!!!-START archive stage..."
                 echo "!!!^^^Start zip..."
-                sh 'ls'
+                sh '''
+                ls'
                 zip --help
-                sh 'ls'
+                ls
+                '''
                 echo "!!!...Finish zip"
                 echo "!!!^^^Start deleting all files in source..."
                 //dir ('bin') { deleteDir() }
