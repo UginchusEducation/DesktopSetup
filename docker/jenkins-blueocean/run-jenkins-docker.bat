@@ -8,3 +8,5 @@ docker run --name jenkins-blueocean ^
 --publish 8080:8080 ^
 --publish 50000:50000 ^
 myjenkins-blueocean:1
+
+get-inside-jenkins.bat

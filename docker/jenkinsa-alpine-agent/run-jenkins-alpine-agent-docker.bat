@@ -5,4 +5,4 @@ docker run -d ^
 -v /var/run/docker.sock:/var/run/docker.sock ^
 myjenkins-agent:alpine-1 ^
 tcp-listen:2375,fork,reuseaddr ^
-unix-connect:/var/run/docker.sock
+unix-connect:/var/run/docker.sock ^
