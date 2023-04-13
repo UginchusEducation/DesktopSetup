@@ -29,7 +29,7 @@ pipeline {
                 echo "!!!-START archive stage..."
                 echo "!!!^^^Start zip..."
                 sh 'ls'
-                zip (defaultExcludes: false, overwrite: true, zipFile: 'Source.zip')
+                zip --help
                 sh 'ls'
                 echo "!!!...Finish zip"
                 echo "!!!^^^Start deleting all files in source..."
