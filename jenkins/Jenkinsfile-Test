@@ -31,7 +31,13 @@ pipeline {
                 sh '''
                 echo "doing delivery stuff.."
                 '''
+                sh './gradlew check'
             }
+        }
+    }
+    post {
+        always {
+            junit 'build/reports/build-results.xml'
         }
     }
 }
