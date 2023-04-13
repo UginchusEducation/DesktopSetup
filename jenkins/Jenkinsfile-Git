@@ -37,7 +37,7 @@ pipeline {
                 sh 'ls'
                 echo "!!!...Finish deleting all files in source"
                 echo "!!!^^^Start archive..."
-                archiveArtifacts(artifacts: 'source/**/*.*',  followSymlinks: false)
+                archiveArtifacts(artifacts: '**/*.*',  followSymlinks: false)
                 echo "!!!...Finish archive"
                 echo "!!!-FINISH archive stage..."
             }
