@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'jenkins/agent:latest-alpine-jdk11' }
+        docker { image 'jenkins/agent:alpine-jdk11' }
     }
     options {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')

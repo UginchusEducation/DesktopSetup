@@ -1,5 +1,4 @@
 docker run -d ^
---name agent-jenkins-alpine ^
 --restart=always ^
 -p 127.0.0.1:2376:2375 ^
 --network jenkins ^
@@ -7,5 +6,3 @@ docker run -d ^
 myjenkins-agent:alpine-1 ^
 tcp-listen:2375,fork,reuseaddr ^
 unix-connect:/var/run/docker.sock
-
-docker inspect agent-jenkins-alpine
