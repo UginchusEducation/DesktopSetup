@@ -1,17 +1,36 @@
 pipeline {
-  agent {
-    node { label 'docker-agent-apline'}
-  }
-  options {
-    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
-  }
-  stages {
-    stage('Maven Agent') {
-      steps {
-        sh '''
-        echo "Finish runnning clone"
-        '''
-      }
+    agent { 
+        node {
+            label 'docker-agent-apline'
+            }
     }
-  }
+    options {
+      buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building..."
+                sh '''
+                echo "doing build stuff.."
+                '''
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "Testing..."
+                sh '''
+                echo "doing test stuff..
+                '''
+            }
+        }
+        stage('Deliver') {
+            steps {
+                echo 'Deliver...'
+                sh '''
+                echo "doing delivery stuff.."
+                '''
+            }
+        }
+    }
 }
