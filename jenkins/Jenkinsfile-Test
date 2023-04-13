@@ -1,13 +1,14 @@
 pipeline {
   agent { 
-    node { label 'docker-agent-alpine' } }
+    node { label 'docker-agent-alpine' } 
+  }
   options {
     buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
   }
   stages {
     stage('Run maven') {
-      docker { image 'my-local-maven:3.9.1' }
       steps {
+        docker { image 'my-local-maven:3.9.1' }
         git 'https://github.com/UginchusEducation/DesktopSetup.git'
         sh 'mvn --version'
         sh 'mvn clean install'
