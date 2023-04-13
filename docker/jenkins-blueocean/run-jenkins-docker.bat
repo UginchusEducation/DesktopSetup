@@ -7,4 +7,4 @@ docker run --name jenkins-blueocean ^
 --volume jenkins-docker-certs:/certs/client:ro ^
 --publish 8080:8080 ^
 --publish 50000:50000 ^
-uginchus/myjenkins-blueocean-1
+myjenkins-blueocean:2.387.2-1

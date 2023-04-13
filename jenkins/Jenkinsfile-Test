@@ -1,0 +1,12 @@
+pipeline {
+  agent { docker { image 'my-local-maven:3.9.1' } }
+  stages {
+    stage('log version info') {
+      steps {
+        git 'https://github.com/UginchusEducation/DesktopSetup.git'
+        sh 'mvn --version'
+        sh 'mvn clean install'
+      }
+    }
+  }
+}

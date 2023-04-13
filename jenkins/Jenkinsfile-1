@@ -1,10 +1,29 @@
 pipeline {
-  agent none 
+  agent { 
+    node {
+      label 'agent-docker-alpine'
+    }
+  }
+  stages {
+      stage('Test') {
+        steps {
+          sh '''
+          "echo 'Testing...'"
+          '''
+        }
+      }
+  }
+}
+
+
+
+
+
+
+    docker { image 'my-local-maven:3.9.1' }
+  }
   stages {
     stage('Checkout') {
-      agent { 
-        docker { image 'my-local-maven:3.9.1' }
-      }
       steps {
         checkout scmGit(
           branches: [[name: '*/main']], 
