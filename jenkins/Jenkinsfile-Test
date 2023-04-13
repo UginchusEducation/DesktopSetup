@@ -7,12 +7,16 @@ pipeline {
   }
   stages {
     stage('Maven Agent') {
+      agent {
+        docker { image 'maven:3.8.6-openjdk-11-slim' }
+      }
       steps {
-        docker { image 'maven:3.8.6-openjdk-11-slim' } 
+        sh '''
         // git 'https://github.com/UginchusEducation/DesktopSetup.git'
         // sh 'mvn --version'
         // sh 'mvn clean install'
         echo "Finish runnning clone"
+        '''
       }
     }
   }
