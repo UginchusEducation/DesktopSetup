@@ -1,14 +1,15 @@
 pipeline {
-  agent none
+  agent {
+    node { label 'docker-agent-apline'}
+  }
   options {
     buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10')
   }
   stages {
     stage('Maven Agent') {
-      agent { 
-        node { label 'docker-agent-maven' }
       }
       steps {
+        docker { image 'maven:3.8.6-openjdk-11-slim' } 
         // git 'https://github.com/UginchusEducation/DesktopSetup.git'
         // sh 'mvn --version'
         // sh 'mvn clean install'
