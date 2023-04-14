@@ -17,17 +17,16 @@ pipeline {
                     [$class: 'GitSCM', 
                     branches: [[name: '*/main']], 
                     extensions: [[$class: 'CloneOption', noTags: false, reference: '', shallow: true, timeout: 120, depth: 1]], 
-                    userRemoteConfigs: [[credentialsId: 'jenkins-ugi-github', url: 'https://github.com/TreemanUA/NerdLike.git']]]
+                    userRemoteConfigs: [[credentialsId: 'jenkins-ugi-github', url: 'https://github.com/UginchusEducation/DesktopSetup.git']]]
                 )
             }
         }
-        stage('Archive') {
+        stage('Copy to host') {
             steps {
-                echo "!!!-START archive stage..."
+                echo "!!!-START copy..."
                 sh 'ls'
-                tar file: 'source.tar.gz'
                 echo "!!!^^^Start archive..."
-                archiveArtifacts(artifacts: 'source.tar.gz',  followSymlinks: false)
+                //archiveArtifacts(artifacts: 'source.tar.gz',  followSymlinks: false)
                 sh 'ls'
                 echo "!!!...Finish archive"
                 echo "!!!-FINISH archive stage..."
