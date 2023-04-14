@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo "!!!-START copy stage..."
                 echo "!!!^^^Start copy..."
-                copyArtifacts(projectName: 'my-test-pipeline');
+                //copyArtifacts(projectName: 'my-test-pipeline');
                 echo "!!!...Finish copy"
                 echo "!!!^^^Start unzip..."
                 sh 'ls'
@@ -26,36 +26,28 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo "Checkouting..."
-                dir('source') {
-                    checkout scmGit(branches: [[name: '*/main']], 
-                        extensions: [cloneOption(depth: 1, noTags: true, reference: 'source', shallow: true, timeout: 200)], 
-                        userRemoteConfigs: [[credentialsId: 'jenkins-ugi-github', url: 'https://github.com/TreemanUA/NerdLike.git']])
-                }
-                dir('source') {
-                    git (branch: 'main', 
-                        depth: 1, 
-                        credentialsId: 'jenkins-ugi-github', 
-                        url: 'https://github.com/TreemanUA/NerdLike.git')
-                }
-                sh '''
-                ls
-                '''
+                checkout(
+                    [$class: 'GitSCM', 
+                    branches: [[name: '*/main']], 
+                    extensions: [[$class: 'CloneOption', noTags: false, reference: '', shallow: true, timeout: 120, depth: 1]], 
+                    userRemoteConfigs: [[credentialsId: 'jenkins-ugi-github', url: 'https://github.com/TreemanUA/NerdLike.git']]]
+                )
             }
         }
         stage('Archive') {
             steps {
                 echo "!!!-START archive stage..."
-                echo "!!!^^^Start zip..."
+                //echo "!!!^^^Start zip..."
                 sh 'ls'
                 //zip (defaultExcludes: false, overwrite: true, zipFile: 'Source.zip')
-                sh 'ls'
-                echo "!!!...Finish zip"
-                echo "!!!^^^Start deleting all files in source..."
+                //sh 'ls'
+                //echo "!!!...Finish zip"
+                //echo "!!!^^^Start deleting all files in source..."
                 //dir ('bin') { deleteDir() }
-                sh 'ls'
-                echo "!!!...Finish deleting all files in source"
+                //sh 'ls'
+                //echo "!!!...Finish deleting all files in source"
                 echo "!!!^^^Start archive..."
-                archiveArtifacts(artifacts: 'source/**/*.*',  followSymlinks: false)
+                archiveArtifacts(artifacts: '**/*.*',  followSymlinks: false)
                 echo "!!!...Finish archive"
                 echo "!!!-FINISH archive stage..."
             }

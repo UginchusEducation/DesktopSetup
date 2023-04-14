@@ -14,30 +14,29 @@ pipeline {
             steps {
                 echo "!!!-START copy stage..."
                 echo "!!!^^^Start copy..."
-                sh 'ls'
-                //copyArtifacts(projectName: 'my-test-pipeline');
-                //changes
+                copyArtifacts(projectName: 'my-test-pipeline');
                 echo "!!!...Finish copy"
                 echo "!!!^^^Start unzip..."
+                sh 'ls'
                 //zip unzipFile: 'Build.zip', dir:'source'
                 echo "!!!...Finish unzip"
                 echo "!!!-FINISH copy stage"
             }
         }
-        
         stage('Archive') {
             steps {
                 echo "!!!-START archive stage..."
-                echo "!!!^^^Start zip..."
-                //zip defaultExcludes: false, dir: '', exclude: '', glob: '', zipFile: 'source.zip'
+                //echo "!!!^^^Start zip..."
                 sh 'ls'
-                echo "!!!...Finish zip"
-                echo "!!!^^^Start deleting all files in source..."
+                //zip (defaultExcludes: false, overwrite: true, zipFile: 'Source.zip')
+                //sh 'ls'
+                //echo "!!!...Finish zip"
+                //echo "!!!^^^Start deleting all files in source..."
                 //dir ('bin') { deleteDir() }
-                sh 'ls'
-                echo "!!!...Finish deleting all files in source"
+                //sh 'ls'
+                //echo "!!!...Finish deleting all files in source"
                 echo "!!!^^^Start archive..."
-                archiveArtifacts(artifacts: '**/*.*',  followSymlinks: false)
+                archiveArtifacts(artifacts: 'source/**/*.*',  followSymlinks: false)
                 echo "!!!...Finish archive"
                 echo "!!!-FINISH archive stage..."
             }
