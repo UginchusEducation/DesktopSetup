@@ -1,5 +1,8 @@
-FROM jenkins/jenkins:2.387.2-lts-jdk11
+FROM jenkins/jenkins:jdk11
 USER root
+
+RUN mkdir -p \jenkins
+WORKDIR \jenkins
 
 RUN apt-get update && apt-get install -y lsb-release
 RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \

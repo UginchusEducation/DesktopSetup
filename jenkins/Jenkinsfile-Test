@@ -1,11 +1,11 @@
 pipeline {
     agent { 
         node {
-            label 'docker-agent-apline'
+            label 'docker-agent-alpine'
         }
     }
     options {
-      buildDiscarder(logRotator(numToKeepStr: '5')) 
+      buildDiscarder(logRotator(numToKeepStr: '3')) 
       durabilityHint('PERFORMANCE_OPTIMIZED') 
       disableConcurrentBuilds()
     }
@@ -25,9 +25,10 @@ pipeline {
             steps {
                 echo "!!!-START archive stage..."
                 sh 'ls'
-                tar file: 'source.tar.gz'
+                // tar file: 'source.tar.gz'
                 echo "!!!^^^Start archive..."
-                archiveArtifacts(artifacts: 'source.tar.gz',  followSymlinks: false)
+                // archiveArtifacts(artifacts: 'source.tar.gz',  followSymlinks: false)
+                archiveArtifacts(artifacts: '**/*.*',  followSymlinks: false)
                 sh 'ls'
                 echo "!!!...Finish archive"
                 echo "!!!-FINISH archive stage..."

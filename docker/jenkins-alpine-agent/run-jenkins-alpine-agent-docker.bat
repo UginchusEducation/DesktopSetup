@@ -3,6 +3,6 @@ docker run -d ^
 -p 127.0.0.1:2376:2375 ^
 --network jenkins ^
 -v /var/run/docker.sock:/var/run/docker.sock ^
-myjenkins-agent:alpine-1 ^
+my-env:alpine ^
 tcp-listen:2375,fork,reuseaddr ^
 unix-connect:/var/run/docker.sock ^

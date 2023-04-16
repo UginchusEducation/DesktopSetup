@@ -1,0 +1,4 @@
+Alpine agent
+172.18.0.3
+jenkins/agent:alpine-jdk11
+/home/jenkins
