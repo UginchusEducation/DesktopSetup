@@ -1,0 +1,1 @@
+docker run --rm -ti -v "PROJECT_PATH:/project" ghcr.io/epicgames/unreal-engine:dev-5.1.1
