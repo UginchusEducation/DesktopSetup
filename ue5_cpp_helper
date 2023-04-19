@@ -1,6 +1,7 @@
 DEFINE_LOG_CATEGORY_STATIC(LogBasePickup, All, All);
 UE_LOG(LogBasePickup, Display, TEXT("Player %s is dead"), *GetName());
 
+%i - integer
 %s - string
 %f - float
 
@@ -8,3 +9,7 @@ UE_LOG(LogRunMapSubsystem, Display, TEXT("Index Corrector = %i /// Same Index = 
 UE_LOG(LogTemp, Log, TEXT("Actor location: %s"), *ActorLocation.ToString());
 
 ---------------------
+Testing
+
+//Add warning event
+AddWarning("Warning example!");
