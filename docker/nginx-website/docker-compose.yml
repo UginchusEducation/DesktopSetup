@@ -1,0 +1,14 @@
+
+version: "0.1"
+
+services:
+  web-server:
+    image: web-server
+    ports:
+      - 8000:80
+    volumes:
+      - type: bind
+        # source: "C:\Users\n_uginchus\Documents\GitHub\DesktopSetup\docker\nginx-website\html"
+        source: "html/"
+        target: /usr/share/nginx/html/
+    container_name: website
