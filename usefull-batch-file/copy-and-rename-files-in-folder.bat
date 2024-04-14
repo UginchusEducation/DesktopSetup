@@ -1,49 +1,43 @@
 @echo off
 setlocal EnableDelayedExpansion
 echo.
-set DirectoryToCopy=c:\Users\n_uginchus\Documents\UnrealProjects\Xena\Source\Aura\
-
 goto :main
 
 :main
     setlocal
         echo =========== Enter directory to copy ===========
         :: set /p DirectoryToCopy=">> "
-        :: c:\Users\n_uginchus\Documents\UnrealProjects\Xena\Source\Aura\
         :: if [%DirectoryToCopy%]==[] goto:begin
-        echo !DirectoryToCopy!
-        cd !DirectoryToCopy!
+        call create-string global_dir "c:\Users\n_uginchus\Documents\UnrealProjects\Xena\Source\Aura\"
+        call create-string current_proj_name "Aura"
+        call create-string target_proj_name "Xena"
+        echo !global_dir!
+        cd !global_dir!
         echo ===============================================
         echo.
-
-        call :files_in_directory
-        ::call :file_content
-
+        call :copy-files
     endlocal
 goto :eof
 
 :: Files in Directory
-:files_in_directory
+:copy-files
     setlocal
-        echo ====== Files in directory with name Aura ======
-        for /r %%g in ( Aura* ) do ( 
-            call create-string var %%g
-            echo !var!
+        echo ====== Files in directory with name !current_proj_name! ======
+        set loop_dir=!current_proj_name!*
+        for /r %%g in ( !loop_dir! ) do ( 
+            call left-chop-append %%g local_dir !global_dir_length!
+            call string-find "!local_dir!" "!current_proj_name!" position
+            for %%g in (!position!) do (
+                set file_name=!local_dir:~%%g!
+                set local_file_dir=!local_dir:~0,%%g!
+                )
+            echo !file_name!
+            set full_dir=!global_dir!!local_file_dir!
+            cd !full_dir!
+            call left-chop-append !file_name! new_file_name !current_proj_name_length! !target_proj_name!
+            type !file_name! > !new_file_name!
             )
-
-        :: echo !var:~4!
-        :: To get all dir info into text
-        :: dir /b > all_files_in_dir.txt 2>&1
-        echo ===============================================
-    endlocal
-goto :eof
-
-:: File Content
-:file_content
-    setlocal
-        echo ============== File Content ===================
-        ::for /f "delims=/ skip=1" %%g in ( Aura.Build.cs ) do ( echo %%g )
-        type Aura.Build.cs
+        cd c:\Users\n_uginchus\Documents\GitHub\DesktopSetup\usefull-batch-file\
         echo ===============================================
     endlocal
 goto :eof
