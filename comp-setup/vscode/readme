@@ -1,0 +1,16 @@
+//// Insert this into vs code settings.json to activate cmder
+
+"terminal.integrated.profiles.windows": {
+    "Cmder": {
+      "name": "Cmder",
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": ["/k", "c:\\Users\\n_uginchus\\Documents\\cmder\\vendor\\bin\\vscode_init.cmd"],
+      "icon": "terminal-cmd",
+      "color": "terminal.ansiYellow"
+    },
+  },
+
+  "terminal.integrated.defaultProfile.windows": "Cmder",
