@@ -1,4 +1,4 @@
-//// Insert this into vs code settings.json to activate cmder
+// Insert this into vs code settings.json to activate cmder
 
 {
   "workbench.settings.applyToAllProfiles": [

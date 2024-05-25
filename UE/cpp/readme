@@ -1,0 +1,33 @@
+This doc for special tips that I found around internet and with my expirience
+----------- UI Block -------------
+
+------ Sources
+
+https://benui.ca/unreal/uproperty/
+
+--------------
+
+------ UPROPERTY
+
+UPROPERTY()
+
+---Inside (X,Y,Z)
+
+EditDefaultsOnly
+
+BlueprintReadOnly 
+BlueprintReadWrite
+
+meta = (Categories = "Abilities.Fire") /// For tag filter
+
+------ Spawn Actor
+
+--- Instant Spawn
+const FActorSpawnParameters SpawnInfo;
+ActorRef = GetWorld()->SpawnActor<AActorClass>(
+    ActorClassRef, 
+    ActorLocation, 
+    ActorRotation, 
+    SpawnInfo);
+
+--- 
