@@ -1,26 +1,53 @@
-This doc for special tips that I found around internet and with my expirience
+-- This doc for special tips that I found around internet and with my expirience
 ----------- UI Block -------------
 
------- Sources
+------ ### Sources
 
 https://benui.ca/unreal/uproperty/
 
 --------------
 
------- UPROPERTY
+------ @@@ UPROPERTY
 
 UPROPERTY()
 
----Inside (X,Y,Z)
+--- Inside (X,Y,Z)
 
 EditDefaultsOnly
+VisibleAnywhere
 
 BlueprintReadOnly 
 BlueprintReadWrite
 
-meta = (Categories = "Abilities.Fire") /// For tag filter
+meta = (Categories = "Abilities.Fire") -- For tag filter
 
------- Spawn Actor
+Categories = "Default" -- For categories in details
+
+----------------
+
+--- Examples
+
+UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+
+UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (Categories = "Abilities.Fire"))
+FGameplayTag DefaultTag;
+
+------------
+
+--------------------
+
+------ @@@ UFUNCTION
+
+UFUNCTION()
+
+---Inside (X,Y,Z)
+
+BlueprintNativeEvent
+
+NetMulticast
+Reliable
+
+------ @@@ Spawn Actor
 
 --- Instant Spawn
 const FActorSpawnParameters SpawnInfo;
@@ -31,3 +58,51 @@ ActorRef = GetWorld()->SpawnActor<AActorClass>(
     SpawnInfo);
 
 --- 
+
+---------------------
+
+--------@@@ Validation
+
+- Stop the project with crush
+checkf(LevelUpInfo, TEXT("Unabled to find LevelUpInfo. Please fill out PlayerState Blueprint"));
+
+---- String
+
+UE_LOG(LogXena, Warning, TEXT("Attribute Tag === %s"), *AttributeTag.ToString());
+
+---- Integer
+
+UE_LOG(LogXena, Warning, TEXT("Attribute Tag === %d"), Amount);
+
+----------------------
+
+--------@@@ Operators
+
+--- Ternary
+
+variable = (condition) ? expressionTrue : expressionFalse;
+
+-----------
+
+----------------------
+
+-------- @@@ GameplayTag
+
+const FGameplayTag StateTag = FWitchGameplayTags::Get().Controller_State_Transition;
+
+CurrentLocationTag.MatchesTagExact(TransitionTag)
+
+---------------------
+
+------------- @@@ Timers
+
+FTimerHandle FuzeTimerHandle;
+  
+GetWorld()->GetTimerManager().SetTimer(
+    FuzeTimerHandle, // handle to cancel timer at a later time
+    this, // the owning object
+    &ASBombActor::OnExplode, // function to call on elapsed
+    MaxFuzeTime, // float delay until elapsed
+    false); // looping?
+
+-------------------------

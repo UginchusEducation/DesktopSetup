@@ -6,9 +6,9 @@ goto :main
 :main
     setlocal
         echo =========== Enter directory to copy ===========
-        ::use
+        :: set /p DirectoryToCopy=">> "
         :: if [%DirectoryToCopy%]==[] goto:begin
-        call create-string global_dir "C:\Unreal\Projects\Xena\Source\Aura\"
+        call create-string global_dir "C:\Utils\MergeTool\"
         call create-string target_dir "C:\Utils\MergeTool\"
         call create-string current_proj_name "Witch"
         call create-string target_proj_name "Xena"
@@ -40,7 +40,7 @@ goto :eof
             echo !new_file_name!
             set copy_dir=!target_dir!!local_file_dir!
             echo !copy_dir!
-            move !new_file_name! !copy_dir!
+            del !file_name!
             )
         cd C:\Utils\DesktopSetup\usefull-batch-file\
         echo ===============================================

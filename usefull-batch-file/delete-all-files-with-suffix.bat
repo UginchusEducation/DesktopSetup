@@ -1,1 +1,0 @@
-del /s /q /f /a *_Sprite.uasset
