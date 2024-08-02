@@ -1,0 +1,97 @@
+------------- UTILITY -------------
+
+// Show full log commits
+git log
+
+// Show oneline log commits
+git log --pretty=oneline
+
+// Show status of current branch
+git status
+
+------------- STAGE ---------------
+
+// Stage all unstaged files
+git add .
+
+// Stage all (NOT new files)
+git add -u
+
+// Delete and stage file
+git rm [file.name]
+
+------------- COMMIT -------------
+
+// Stage and commit all (NOT new files)
+git commit -a
+
+// Commit with message
+git commit -m "Some message"
+
+// Change commited file with new  version of it
+git commit --amend [file_name]
+
+// Commit quick command
+git config --global alias.qc "commit -am"
+
+------------- REVERT -------------
+
+// To revert staged files
+git restor --staged
+
+// Revert commit by id
+git revert [commit_id]
+
+// Discard last commit
+git reset HEAD~
+
+// Discard last n commits
+git reset HEAD~n
+
+------------- BRANCH -------------
+
+// Show all branches
+git branch
+
+// Create branch
+git branch [branch_name]
+
+// Switch to target branch
+git checkout [branch_name]
+
+// Create and switch to target branch
+git checkout -b [branch_name]
+
+// Delete target branch
+git brench -d [branch_name]
+
+// Force delete target branch
+git brench -D [branch_name]
+
+------------- MERGE ---------------
+
+// Merge target branch to current
+git merge [branch_name]
+
+// Rebase current branch to last main commit
+git rebase [branch_name]
+
+// Diff two commits
+git diff [commit_id_1] [commit_id_2]
+
+------------- REMOTE ---------------
+
+// Pull all commits from remote
+git pull
+
+// Push all commits to remote
+git push
+
+// Push local branch
+git push -u origin [branch_name]
+
+// Delete target branch from remote
+git push --delete origin [branch_name]
+
+// Fentch local with remote files
+git fetch

@@ -66,11 +66,18 @@ ActorRef = GetWorld()->SpawnActor<AActorClass>(
 - Stop the project with crush
 checkf(LevelUpInfo, TEXT("Unabled to find LevelUpInfo. Please fill out PlayerState Blueprint"));
 
----- String
+--------@@@ UE_LOG
+
+---- Debug init category
+
+DEFINE_LOG_CATEGORY_STATIC(LogBasePickup, All, All);
+UE_LOG(LogBasePickup, Display, TEXT("Player %s is dead"), *GetName());
+
+---- String example 
 
 UE_LOG(LogXena, Warning, TEXT("Attribute Tag === %s"), *AttributeTag.ToString());
 
----- Integer
+---- Integer example
 
 UE_LOG(LogXena, Warning, TEXT("Attribute Tag === %d"), Amount);
 
@@ -103,6 +110,6 @@ GetWorld()->GetTimerManager().SetTimer(
     this, // the owning object
     &ASBombActor::OnExplode, // function to call on elapsed
     MaxFuzeTime, // float delay until elapsed
-    false); // looping?
+    false); // looping
 
 -------------------------
