@@ -1,0 +1,10 @@
+---------------------- PRINT ---------------------
+
+// Examples of printing
+print("Hello")
+print('She said: "Hello" and then left.')
+print("She said: 'Hello' and then left.")
+print("She said: \"Hello\" and then left.")
+
+// Input
+input("Spell your name")

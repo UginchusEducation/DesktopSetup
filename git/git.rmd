@@ -9,7 +9,10 @@ git log --pretty=oneline
 // Show status of current branch
 git status
 
-------------- STAGE ---------------
+// Show all config settings
+git config -l --show-origin
+
+------------- STAGE/STASH ---------------
 
 // Stage all unstaged files
 git add .
@@ -19,6 +22,15 @@ git add -u
 
 // Delete and stage file
 git rm [file.name]
+
+// Stashed current working files in current branch
+git stash
+
+// Show current change between current file version and stached
+git stash show
+
+// Delete stashed files
+git stash pop 
 
 ------------- COMMIT -------------
 
@@ -79,6 +91,12 @@ git rebase [branch_name]
 // Diff two commits
 git diff [commit_id_1] [commit_id_2]
 
+// Commit specific commit from another branch to current
+git cherry-pick [commit_id]
+
+// Stage specific commit from another branch to current
+git cherry-pick -n [commit_id]
+
 ------------- REMOTE ---------------
 
 // Pull all commits from remote
@@ -95,3 +113,17 @@ git push --delete origin [branch_name]
 
 // Fentch local with remote files
 git fetch
+
+// Rebase current branch commit
+git rebase -i [commit_id]
+
+------------- LFS ---------------
+
+// To work with large files
+git lfs install
+
+// Wich file type need to track
+git lfs track *.[file_type]
+
+// Show all tracked files
+git lfs track
